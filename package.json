@@ -9,10 +9,21 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth/prisma-adapter": "^2.4.1",
+    "@prisma/client": "^5.15.1",
+    "dompurify": "^3.1.5",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
+    "firebase": "^10.12.2",
+    "isomorphic-dompurify": "^2.12.0",
     "next": "13.4.19",
+    "next-auth": "^4.24.7",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-quill": "^2.0.0",
+    "swr": "^2.2.5"
+  },
+  "devDependencies": {
+    "prisma": "^5.15.1"
   }
 }
