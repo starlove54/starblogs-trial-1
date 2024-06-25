@@ -24,6 +24,7 @@
     "swr": "^2.2.5"
   },
   "devDependencies": {
+    "@appnest/readme": "^1.2.7",
     "prisma": "^5.15.1"
   }
 }
