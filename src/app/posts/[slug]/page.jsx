@@ -13,6 +13,7 @@ const getData = async (slug) => {
   }
   return res.json()
 }
+
 const SinglePage = async ({ params }) => {
   const { slug } = params
   const data = await getData(slug)
@@ -60,5 +61,4 @@ const SinglePage = async ({ params }) => {
     </div>
   )
 }
-
 export default SinglePage

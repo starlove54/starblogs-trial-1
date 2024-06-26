@@ -15,5 +15,4 @@ const BlogPage = ({ searchParams }) => {
     </div>
   )
 }
-
 export default BlogPage

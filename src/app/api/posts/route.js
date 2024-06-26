@@ -14,7 +14,6 @@ export const GET = async (req) => {
       ...(cat && { catSlug: cat }),
     },
   }
-
   try {
     const [posts, count] = await prisma.$transaction([
       prisma.post.findMany(query),
@@ -33,13 +32,11 @@ export const GET = async (req) => {
 export const POST = async (req) => {
   const session = await getAuthSession()
   console.log(session)
-
   if (!session) {
     return new NextResponse(
       JSON.stringify({ message: 'Not Authenticated' }, { status: 401 })
     )
   }
-
   try {
     const body = await req.json()
     const post = await prisma.post.create({
