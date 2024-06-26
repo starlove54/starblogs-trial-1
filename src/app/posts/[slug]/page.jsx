@@ -5,7 +5,7 @@ import Comments from '@/components/comments/Comments'
 import Menu from '@/components/menu/Menu'
 import DOMPurify from 'isomorphic-dompurify'
 const getData = async (slug) => {
-  const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
+  const res = await fetch(`http://starblogs-trial.in/api/posts/${slug}`, {
     cache: 'no-store',
   })
   if (!res.ok) {
