@@ -4,14 +4,22 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 const getData = async () => {
-  const res = await fetch('http://starblogs-trial.in/api/categories', {
-    cache: 'no-store',
-  })
-  if (!res.ok) {
-    throw new Error('Failed')
+  try {
+    const res = await fetch('http://localhost:3000/api/categories', {
+      cache: 'no-store',
+    })
+    if (!res.ok) {
+      throw new Error('Failed to fetch categories')
+    }
+    const data = await res.json()
+    if (!Array.isArray(data)) {
+      throw new Error('API did not return an array')
+    }
+    return data
+  } catch (error) {
+    console.error('Error fetching data:', error)
+    return []
   }
-
-  return res.json()
 }
 const CategoryList = async () => {
   const data = await getData()
@@ -21,7 +29,7 @@ const CategoryList = async () => {
       <div className={styles.categories}>
         {data?.map((item) => (
           <Link
-            href="/blog?cat=style"
+            href={`/blog?cat=${item.slug}`}
             className={`${styles.category} ${styles[item.slug]}`}
             key={item._id}
           >

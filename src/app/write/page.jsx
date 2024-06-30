@@ -14,10 +14,10 @@ import {
 } from 'firebase/storage'
 import { app } from '@/utils/firebase'
 import dynamic from 'next/dynamic'
+const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
 
 const WritePage = () => {
   const { status } = useSession()
-  const ReactQuill = dynamic(() => import('react-quill'), { ssr: false })
   const router = useRouter()
   const [file, setFile] = useState(null)
   const [media, setMedia] = useState('')
@@ -139,7 +139,7 @@ const WritePage = () => {
           theme="bubble"
           value={value}
           onChange={setValue}
-          placeholder="Tell me your story.."
+          placeholder="Tell your story..."
         />
       </div>
       <button className={styles.publish} onClick={handleSubmit}>

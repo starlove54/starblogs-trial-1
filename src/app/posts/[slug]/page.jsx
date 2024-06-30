@@ -4,8 +4,9 @@ import Image from 'next/image'
 import Comments from '@/components/comments/Comments'
 import Menu from '@/components/menu/Menu'
 import DOMPurify from 'isomorphic-dompurify'
+import ErrorBoundary from '@/components/errorBoundary/ErrorBoundary'
 const getData = async (slug) => {
-  const res = await fetch(`http://starblogs-trial.in/api/posts/${slug}`, {
+  const res = await fetch(`http://localhost:3000/api/posts/${slug}`, {
     cache: 'no-store',
   })
   if (!res.ok) {
@@ -17,48 +18,54 @@ const getData = async (slug) => {
 const SinglePage = async ({ params }) => {
   const { slug } = params
   const data = await getData(slug)
-  const sanitizedDesc = DOMPurify.sanitize(data?.desc || '')
+
   return (
-    <div className={styles.container}>
-      <div className={styles.infoContainer}>
-        <div className={styles.textContainer}>
-          <h1 className={styles.title}>{data?.title}</h1>
-          <div className={styles.user}>
-            {data?.user?.image && (
-              <div className={styles.userImageContainer}>
-                <Image
-                  src={data.user.image}
-                  alt=""
-                  fill
-                  className={styles.avatar}
-                />
+    <ErrorBoundary>
+      <div className={styles.container}>
+        <div className={styles.infoContainer}>
+          <div className={styles.textContainer}>
+            <h1 className={styles.title}>{data?.title}</h1>
+            <div className={styles.user}>
+              {data?.user?.image && (
+                <div className={styles.userImageContainer}>
+                  <Image
+                    src={data.user.image}
+                    alt=""
+                    fill
+                    className={styles.avatar}
+                  />
+                </div>
+              )}
+              <div className={styles.userTextContainer}>
+                <span className={styles.username}>{data?.user?.name}</span>
+                <span className={styles.date}>
+                  {new Date(data?.createdAt).toLocaleDateString()}
+                </span>
               </div>
-            )}
-            <div className={styles.userTextContainer}>
-              <span className={styles.username}>{data?.user?.name}</span>
-              <span className={styles.date}>01.01.2024</span>
             </div>
           </div>
+          {data?.img && (
+            <div className={styles.imageContainer}>
+              <Image src={data.img} alt="" fill className={styles.image} />
+            </div>
+          )}
         </div>
-        {data?.img && (
-          <div className={styles.imageContainer}>
-            <Image src={data.img} alt="" fill className={styles.image} />
+        <div className={styles.content}>
+          <div className={styles.post}>
+            <div
+              className={styles.description}
+              dangerouslySetInnerHTML={{
+                __html: DOMPurify.sanitize(data?.desc),
+              }}
+            />
+            <div className={styles.comment}>
+              <Comments postSlug={slug} />
+            </div>
           </div>
-        )}
-      </div>
-      <div className={styles.content}>
-        <div className={styles.post}>
-          <div
-            className={styles.description}
-            dangerouslySetInnerHTML={{ __html: sanitizedDesc }}
-          />
-          <div className={styles.comment}>
-            <Comments postSlug={slug} />
-          </div>
+          <Menu />
         </div>
-        <Menu />
       </div>
-    </div>
+    </ErrorBoundary>
   )
 }
 export default SinglePage

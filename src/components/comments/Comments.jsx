@@ -18,10 +18,9 @@ const fetcher = async (url) => {
 const Comments = ({ postSlug }) => {
   const { status } = useSession()
   const { data, mutate, isLoading } = useSWR(
-    `http://starblogs-trial.in/api/comments?postSlug=${postSlug}`,
+    `http://localhost:3000/api/comments?postSlug=${postSlug}`,
     fetcher
   )
-
   const [desc, setDesc] = useState('')
   const handleSubmit = async () => {
     await fetch('/api/comments', {
@@ -64,7 +63,9 @@ const Comments = ({ postSlug }) => {
                   )}
                   <div className={styles.userInfo}>
                     <span className={styles.username}>{item.user.name}</span>
-                    <span className={styles.date}>{item.createdAt}</span>
+                    <span className={styles.date}>
+                      {new Date(item?.createdAt).toLocaleDateString()}
+                    </span>
                   </div>
                 </div>
                 <p className={styles.desc}>{item.desc}</p>

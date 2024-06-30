@@ -16,9 +16,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <ThemeContextProvider>
-        <body className={`{inter.className} `}>
-          <AuthProvider>
+      <body className={`{inter.className} `}>
+        <AuthProvider>
+          <ThemeContextProvider>
             <ThemeProvider>
               <div className="container">
                 <div className="wrapper">
@@ -28,9 +28,9 @@ export default function RootLayout({ children }) {
                 </div>
               </div>
             </ThemeProvider>
-          </AuthProvider>
-        </body>
-      </ThemeContextProvider>
+          </ThemeContextProvider>
+        </AuthProvider>
+      </body>
     </html>
   )
 }
