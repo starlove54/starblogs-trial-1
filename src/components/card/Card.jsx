@@ -33,5 +33,4 @@ const Card = ({ key, item }) => {
     </div>
   )
 }
-
 export default Card
