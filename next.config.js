@@ -1,15 +1,18 @@
+const withImages = require('next-images')
+
 /** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig = withImages({
   images: {
-    // domains: ['lh3.googleusercontent.com', 'firebasestorage.googleapis.com'],
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'lh3.googleusercontent.com',
+        hostname: 'firebasestorage.googleapis.com',
+        pathname: '/v0/b/starblogs-trial.appspot.com/**',
       },
       {
         protocol: 'https',
-        hostname: 'firebasestorage.googleapis.com',
+        hostname: 'lh3.googleusercontent.com',
+        pathname: '/a/**',
       },
     ],
   },
@@ -21,6 +24,6 @@ const nextConfig = {
     DATABASE_URL: process.env.DATABASE_URL,
     FIREBASE: process.env.FIREBASE,
   },
-}
+})
 
 module.exports = nextConfig
