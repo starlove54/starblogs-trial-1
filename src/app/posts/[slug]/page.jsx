@@ -16,6 +16,7 @@ const getData = async (slug) => {
 
 const SinglePage = async ({ params }) => {
   const { slug } = params
+  console.log(slug)
   const data = await getData(slug)
 
   return (
@@ -31,6 +32,7 @@ const SinglePage = async ({ params }) => {
                   alt="user image"
                   fill
                   className={styles.avatar}
+                  sizes="(max-width: 600px) 100vw, 50px"
                 />
               </div>
             )}
@@ -42,7 +44,13 @@ const SinglePage = async ({ params }) => {
         </div>
         {data?.img && (
           <div className={styles.imageContainer}>
-            <Image src={data.img} alt="" fill className={styles.image} />
+            <Image
+              src={data.img}
+              alt=""
+              fill
+              className={styles.image}
+              sizes="(max-width: 600px) 100vw, 50px"
+            />
           </div>
         )}
       </div>

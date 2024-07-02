@@ -8,7 +8,13 @@ const MenuPosts = ({ withImage }) => {
       <Link href="/" className={styles.item}>
         {withImage && (
           <div className={styles.imageContainer}>
-            <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+            <Image
+              src="/p1.jpeg"
+              alt=""
+              fill
+              className={styles.image}
+              sizes="(max-width: 600px) 100vw, 50px"
+            />
           </div>
         )}
         <div className={styles.textContainer}>
@@ -23,7 +29,13 @@ const MenuPosts = ({ withImage }) => {
       <Link href="/" className={styles.item}>
         {withImage && (
           <div className={styles.imageContainer}>
-            <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+            <Image
+              src="/p1.jpeg"
+              alt=""
+              fill
+              className={styles.image}
+              sizes="(max-width: 600px) 100vw, 50px"
+            />
           </div>
         )}
         <div className={styles.textContainer}>
@@ -40,7 +52,13 @@ const MenuPosts = ({ withImage }) => {
       <Link href="/" className={styles.item}>
         {withImage && (
           <div className={styles.imageContainer}>
-            <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+            <Image
+              src="/p1.jpeg"
+              alt=""
+              fill
+              className={styles.image}
+              sizes="(max-width: 600px) 100vw, 50px"
+            />
           </div>
         )}
         <div className={styles.textContainer}>
@@ -55,7 +73,13 @@ const MenuPosts = ({ withImage }) => {
       <Link href="/" className={styles.item}>
         {withImage && (
           <div className={styles.imageContainer}>
-            <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+            <Image
+              src="/p1.jpeg"
+              alt=""
+              fill
+              className={styles.image}
+              sizes="(max-width: 600px) 100vw, 50px"
+            />
           </div>
         )}
         <div className={styles.textContainer}>

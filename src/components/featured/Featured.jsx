@@ -9,7 +9,14 @@ const featured = () => {
       </h1>
       <div className={styles.post}>
         <div className={styles.imgContainer}>
-          <Image src="/p1.jpeg" alt="" fill className={styles.image} />
+          <Image
+            priority
+            src="/p1.jpeg"
+            alt=""
+            fill
+            className={styles.image}
+            sizes="(max-width: 600px) 100vw, 50px"
+          />
         </div>
         <div className={styles.textContainer}>
           <h1 className={styles.postTitle}> What is Lorem Ipsum?</h1>
