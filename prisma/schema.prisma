@@ -74,20 +74,6 @@ model Category{
   posts Post[]
 } 
 
-// model Post{
-//   id String @id @default(cuid()) @map("_id")
-//   createdAt DateTime @default(now())
-//   slug String @unique
-//   title String
-//   desc String
-//   img String?
-//   views Int @default(0)  
-//   catSlug String
-//   cat Category @relation(fields: [catSlug], references: [slug])
-//   userEmail String
-//   user User  @relation(fields: [userEmail], references: [email])
-//   comments Comment[]
-// }
 model Post {
   id       String    @id @default(cuid()) @map("_id")
   createdAt DateTime @default(now())
@@ -100,7 +86,7 @@ model Post {
   cat Category @relation(fields: [catSlug], references: [slug])
   userEmail String
   user User  @relation(fields: [userEmail], references: [email])
-  comments Comment[]
+  comments Comment[] 
 }
 
 model Comment{
@@ -112,3 +98,7 @@ model Comment{
   postSlug String
   post Post  @relation(fields: [postSlug], references: [slug])
 } 
+
+
+
+ 

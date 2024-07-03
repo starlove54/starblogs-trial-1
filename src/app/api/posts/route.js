@@ -2,6 +2,7 @@ import { getAuthSession } from '@/utils/auth'
 import prisma from '@/utils/connect'
 import { NextResponse } from 'next/server'
 
+// get a lists of posts
 export const GET = async (req) => {
   const { searchParams } = new URL(req.url)
   const page = searchParams.get('page')
@@ -31,7 +32,6 @@ export const GET = async (req) => {
 //CREATE A POST
 export const POST = async (req) => {
   const session = await getAuthSession()
-  console.log(session)
   if (!session) {
     return new NextResponse(
       JSON.stringify({ message: 'Not Authenticated' }, { status: 401 })
